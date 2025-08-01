@@ -1,4 +1,3 @@
-import json
 import data_fetcher
 
 
