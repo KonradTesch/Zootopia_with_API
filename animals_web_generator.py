@@ -1,13 +1,5 @@
 import json
-
-
-def load_data():
-    """
-    gets the animal data from the json file.
-    """
-    with open('../../../Downloads/My-Zootopia-main/animals_data.json', 'r') as file:
-        data = json.load(file)
-        return data
+import data_fetcher
 
 
 def generate_html_string(data):
@@ -17,6 +9,7 @@ def generate_html_string(data):
         html_string += serialize_animal_info(animal)
 
     return html_string
+
 
 def serialize_animal_info(animal):
     html_string = ""
@@ -53,7 +46,7 @@ def serialize_animal_info(animal):
 
 
 def strong_html_string(text):
-    """Returns a string with the html string element"""
+    """Returns a string with the html strong element"""
     return f"<strong>{text}</strong>"
 
 
@@ -70,7 +63,7 @@ def creates_new_html_file(html_string):
 
 def main():
     """The main function"""
-    data = load_data()
+    data = data_fetcher.fetch_data()
     html_string = generate_html_string(data)
 
     creates_new_html_file(html_string)
